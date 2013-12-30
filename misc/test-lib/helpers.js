@@ -8,6 +8,13 @@ beforeEach(function() {
       };
 
       return this.actual.hasClass(cls);
+    },
+    toHaveId: function(id) {
+      this.message = function() {
+        return "Expected '" + this.actual + "'" + (this.isNot ? ' not ' : ' ') + "to have id '" + id + "'.";
+      };
+
+      return this.actual.attr('id') === id;
     }
   });
 });

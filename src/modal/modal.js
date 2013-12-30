@@ -84,6 +84,7 @@ angular.module('ui.bootstrap.modal', [])
       transclude: true,
       templateUrl: 'template/modal/window.html',
       link: function (scope, element, attrs) {
+        scope.windowId    = attrs.windowId || '';
         scope.windowClass = attrs.windowClass || '';
 
         $timeout(function () {
@@ -183,6 +184,7 @@ angular.module('ui.bootstrap.modal', [])
         }
           
         var angularDomEl = angular.element('<div modal-window></div>');
+        angularDomEl.attr('window-id', modal.windowId);
         angularDomEl.attr('window-class', modal.windowClass);
         angularDomEl.attr('index', openedWindows.length() - 1);
         angularDomEl.html(modal.content);
@@ -301,6 +303,7 @@ angular.module('ui.bootstrap.modal', [])
                 content: tplAndVars[0],
                 backdrop: modalOptions.backdrop,
                 keyboard: modalOptions.keyboard,
+                windowId: modalOptions.windowId,
                 windowClass: modalOptions.windowClass
               });
 

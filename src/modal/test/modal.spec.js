@@ -393,6 +393,18 @@ describe('$modal', function () {
       });
     });
 
+    describe('custom window id', function () {
+
+      it('should support additional window id as string', function () {
+        open({
+          template: '<div>With custom window id</div>',
+          windowId: 'test'
+        });
+
+        expect($document.find('div.modal')).toHaveId('test');
+      });
+    });
+
     describe('custom window classes', function () {
 
       it('should support additional window class as string', function () {
